@@ -1,4 +1,5 @@
 // Тоглогчийн ээлжийг хадгалах хувьсагч нэгдүгээр тоглогч - 0, хоёрдугаар тоглогч - 1
+function beginStart(){}
 var activePlayer = 1;
 // Тоглогчдын цуглуулсан оноог хадгалах хувьсагч 
 var scores = [0, 0]; // 2 тоглогчийн оноог массив хэлбэрээр зарлав.
@@ -20,13 +21,14 @@ document.getElementById('current-0').textContent = "0";
 document.getElementById('current-1').textContent = "0";
 document.querySelector(".dice").style.display = "none";
 
-function beginStart(){
-document.getElementById('score-0').textContent = "0";
-document.getElementById('score-1').textContent = "0";
-document.getElementById('current-0').textContent = "0";
-document.getElementById('current-1').textContent = "0";
-document.querySelector(".dice").style.display = "none";
-}
+// 
+// document.getElementById('score-0').textContent = "0";
+// document.getElementById('score-1').textContent = "0";
+// document.getElementById('current-0').textContent = "0";
+// document.getElementById('current-1').textContent = "0";
+// document.querySelector(".dice").style.display = "none";
+// roundScore = 0;
+// }
 
 // Event listener
 document.querySelector(".btn-roll").addEventListener("click", shooShid);
@@ -35,9 +37,11 @@ document.querySelector(".btn-hold").addEventListener("click", storeNumber);
 
 var i = 0;
 function shooShid(){
+
     var diceNumber = Math.floor(Math.random()*6) + 1;
     document.querySelector(".dice").style.display = "block";
     document.querySelector(".dice").src = "dice-" + diceNumber + ".png";
+    
     // 
     if (diceNumber !== 1){
         roundScore += diceNumber;
@@ -52,6 +56,7 @@ function shooShid(){
         swap();
     }
         // alert("Шоо " + diceNumber + " талаараа буулаа.");
+
 }
 function storeNumber(){
     scores[activePlayer] += roundScore;
@@ -62,9 +67,15 @@ function storeNumber(){
 
    function swap(){
     if (activePlayer === 1 ) {
+       
+        document.querySelector(".player-" + activePlayer + "-panel").classList.remove("active");
         activePlayer = 0;
-    }
+        document.querySelector(".player-" + activePlayer + "-panel").classList.add("active");
+        }
     else {
+        
+        document.querySelector(".player-" + activePlayer + "-panel").classList.add("active");
         activePlayer = 1;
+        
     }
    }
