@@ -71,4 +71,5 @@ document.querySelector(".dice").style.display = "none";
 
 document.getElementById("name-0").textContent = "Player 1";
 document.getElementById("name-1").textContent = "Player 2";
+console.log("jkj");
    }
